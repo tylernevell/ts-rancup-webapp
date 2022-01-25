@@ -1,11 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+body,
+#__next {
+  height: 100%;
+  color: var(--primary-500);
 }
 
+:root {
+  --primary-400: #2d3748;
+  --primary-500: #1a202c;
+  --primary-600: #10131a;
+  --primary-700: #0d1016;
+  --primary-800: #000000;
+
+  --secondary-400: #f7fafc;
+  --secondary-500: #edf0f7;
+  --secondary-600: #cbd5e0;
+  --secondary-700: #a0aec0;
+  --secondary-800: #718096;
+
+  --tertiary-400: #cbd5e0;
+  --tertiary-500: #a0aec0;
+  --tertiary-600: #718096;
+  --tertiary-700: #4a5568;
+  --tertiary-800: #2d3748;
+
+  --accentA-400: #7effcd;
+  --accentA-500: #47ffb8;
+  --accentA-600: #40e6a6;
+  --accentA-700: #35bf8a;
+  --accentA-800: #2b996e;
+
+  --accentB-400: #ff927e;
+  --accentB-500: #ff6347;
+  --accentB-600: #e65940;
+  --accentB-700: #bf4a35;
+  --accentB-800: #993b2b;
+  /* Roboto */
+  --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-display: 'Trispace', sans-serif;
+  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --speed: 5;
+}
 a {
   color: inherit;
   text-decoration: none;
