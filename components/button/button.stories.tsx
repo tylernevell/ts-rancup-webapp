@@ -1,14 +1,24 @@
-import React from 'react';
-import { ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button } from './button';
 
-const Block: React.VoidFunctionComponent = () => <h1>WIP</h1>;
 export default {
   title: 'Components/Button',
   component: Button,
-} as ComponentMeta<typeof Block>;
+  argTypes: {},
+} as ComponentMeta<typeof Button>;
 
-export const Basic = {
-  args: {},
-  parameters: {},
+const Template: ComponentStory<typeof Button> = (args) => (
+  <>
+    <Button {...args} />
+    <br />
+    <Button buttonType="secondary" type="button" />
+    <br />
+    <Button buttonType="flat" type="button" />
+  </>
+);
+
+export const CustomButton = Template.bind({});
+CustomButton.args = {
+  type: 'button',
+  buttonType: 'primary',
 };

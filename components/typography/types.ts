@@ -1,11 +1,7 @@
 import React from 'react';
 import { TailwindTextColors } from '../colors/types';
 
-type TailwindFontFamily =
-  | 'font-mono'
-  | 'font-serif'
-  | 'font-sans'
-  | 'font-display';
+type TailwindFontFamily = 'font-mono' | 'font-sans';
 type TailwindTextAlign = 'text-left' | 'text-right' | 'text-center';
 type TailwindTextSizes =
   | 'text-xs'
@@ -17,12 +13,9 @@ type TailwindTextSizes =
   | 'text-3xl'
   | 'text-4xl'
   | 'text-5xl'
-  | 'text-6xl'
-  | 'text-7xl'
-  | 'text-8xl'
-  | 'text-9xl';
+  | 'text-6xl';
 
-type PropsType = {
+type TypographyFieldsType = {
   children?: React.ReactNode;
   variant?: keyof JSX.IntrinsicElements;
   color?: TailwindTextColors;
@@ -32,7 +25,23 @@ type PropsType = {
   className?: string;
 };
 
+interface PropsType extends TypographyFieldsType {
+  preset:
+    | 'custom'
+    | 'heading'
+    | 'heading2'
+    | 'heading3'
+    | 'heading4'
+    | 'heading5'
+    | 'heading6'
+    | 'paragraph1'
+    | 'paragraph2'
+    | 'paragraph3';
+  children?: React.ReactNode;
+}
+
 export type {
+  TypographyFieldsType,
   TailwindTextSizes,
   TailwindFontFamily,
   TailwindTextAlign,

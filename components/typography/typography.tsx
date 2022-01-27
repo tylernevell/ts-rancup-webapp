@@ -1,22 +1,27 @@
-import React from 'react';
-import type { PropsType } from './types';
+import type { TypographyFieldsType, PropsType } from './types';
+import { typographyPresets } from './presets';
 
-export const Typography = ({
-  children = 'The quick brown fox jumps over the lazy dog.',
-  variant = 'p',
-  color = 'currentColor',
-  size = 'text-base',
-  textAlign = 'text-left',
-  fontFamily = 'font-sans',
-  className,
-  ...props
-}: PropsType) => {
-  const Tag = variant as keyof JSX.IntrinsicElements;
+export const Typography = (props: PropsType) => {
+  const {
+    preset = 'custom',
+    size,
+    variant = 'p',
+    children = 'The quick brown fox jumps over the lazy dog.',
+    color,
+    textAlign = 'text-left',
+    fontFamily = 'font-sans',
+    className,
+  } = props;
 
+  const fields: TypographyFieldsType | undefined =
+    preset === 'custom'
+      ? { size, variant, color, textAlign, fontFamily, className }
+      : typographyPresets.find((obj) => obj.key === preset)?.props;
+
+  const Tag = fields?.variant as keyof JSX.IntrinsicElements;
   return (
     <Tag
-      className={`${size} ${color} ${textAlign} ${fontFamily} ${className}`}
-      {...props}
+      className={`${fields?.size} ${fields?.color} ${fields?.textAlign} ${fields?.fontFamily} ${fields?.className} ${className}`}
     >
       {children}
     </Tag>
