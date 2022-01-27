@@ -11,9 +11,9 @@ const Template: ComponentStory<typeof Button> = (args) => (
   <>
     <Button {...args} />
     <br />
-    <Button buttonType="secondary" type="button" />
+    <Button {...args} buttonType="secondary" type="button" />
     <br />
-    <Button buttonType="flat" type="button" />
+    <Button {...args} buttonType="flat" type="button" />
   </>
 );
 
@@ -21,4 +21,5 @@ export const CustomButton = Template.bind({});
 CustomButton.args = {
   type: 'button',
   buttonType: 'primary',
+  label: { children: 'Button' },
 };

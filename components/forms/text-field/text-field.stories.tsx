@@ -1,26 +1,18 @@
-import { ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { TextField } from './text-field';
 
-const TextFieldExample = () => {
-  const onChange = () => {};
-  return (
-    <TextField
-      onChange={onChange}
-      placeholder="Test Placeholder"
-      type="email"
-      label="Email"
-    />
-  );
-};
 export default {
-  title: 'Components/Forms/TextField',
-  component: TextFieldExample,
+  title: 'Components/TextField',
+  component: TextField,
+  argTypes: {},
 } as ComponentMeta<typeof TextField>;
 
-export const Basic = {
-  args: {},
-  parameters: {
-    design: { type: 'figma', url: '' },
-    status: { type: 'wip' },
-  },
+const Template: ComponentStory<typeof TextField> = (args) => (
+  <TextField {...args} />
+);
+
+export const CustomTextField = Template.bind({});
+CustomTextField.args = {
+  validationFunction: (value: string) => value.length > 8,
+  label: 'Name > 8 Chars',
 };

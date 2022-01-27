@@ -104,7 +104,7 @@ const Button = forwardRef<RefType, ButtonPropTypes>((props, ref) => {
       tabIndex={0}
       disabled={disabled}
     >
-      <Typography preset="custom">{label}</Typography>
+      <Typography preset="custom" {...label} />
     </button>
   );
 });
