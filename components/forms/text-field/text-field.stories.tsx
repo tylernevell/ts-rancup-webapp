@@ -14,5 +14,5 @@ const Template: ComponentStory<typeof TextField> = (args) => (
 export const CustomTextField = Template.bind({});
 CustomTextField.args = {
   validationFunction: (value: string) => value.length > 8,
-  label: 'Name > 8 Chars',
+  placeholder: 'Name > 8 Chars',
 };

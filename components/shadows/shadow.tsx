@@ -7,7 +7,7 @@ const Shadow = (props: TypographyPropsType) => {
   const { children, shadowType } = props;
 
   let shadowClasses =
-    'inline-flex transition-all duration-200 ease-in-out shadow-lg ';
+    'flex sm:inline-flex transition-all duration-200 ease-in-out shadow-lg ';
 
   switch (shadowType) {
     case 'default':

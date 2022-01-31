@@ -1,11 +1,11 @@
-import { AriaAttributes, forwardRef } from 'react';
+import { AriaAttributes, forwardRef, ReactNode } from 'react';
 import { TypographyFieldsType } from '../typography/types';
 import { Typography } from '../typography/typography';
 
 type ButtonTypes = 'primary' | 'secondary' | 'flat';
 
 type ButtonPropTypes = {
-  label?: TypographyFieldsType;
+  children?: ReactNode;
   type: 'submit' | 'button' | 'reset' | undefined;
   buttonType?: ButtonTypes;
   ariaLabel?: string;
@@ -22,13 +22,14 @@ type ButtonPropTypes = {
   dataReview?: string;
   id?: string;
   name?: string;
+  className?: string;
 };
 
 type RefType = HTMLButtonElement;
 
 const Button = forwardRef<RefType, ButtonPropTypes>((props, ref) => {
   const {
-    label = 'Button',
+    children = 'Button',
     type = 'button',
     buttonType = 'default',
     ariaLabel,
@@ -43,6 +44,7 @@ const Button = forwardRef<RefType, ButtonPropTypes>((props, ref) => {
     dataId,
     id,
     name,
+    className,
   } = props;
 
   let buttonTypeClasses =
@@ -60,7 +62,7 @@ const Button = forwardRef<RefType, ButtonPropTypes>((props, ref) => {
       break;
     case 'flat':
       buttonTypeClasses +=
-        'bg-white-default border drop-shadow-none border-transparent hover:bg-secondary-hover ' +
+        'bg-white-default border drop-shadow-none shadow-none border-transparent hover:bg-secondary-hover ' +
         'disabled:text-primary-disabled disabled:ring-primary-disabled disabled:bg-white-default disabled:border-transparent ' +
         'active:bg-secondary-active active:border-gray-default ' +
         'focus:ring-2 focus:ring-gray-default focus:border-transparent ';
@@ -97,14 +99,14 @@ const Button = forwardRef<RefType, ButtonPropTypes>((props, ref) => {
       id={id}
       name={name}
       ref={ref}
-      className={buttonTypeClasses}
+      className={`${buttonTypeClasses} ${className}`}
       type={type}
       onClick={onClick}
       onKeyPress={onClick}
       tabIndex={0}
       disabled={disabled}
     >
-      <Typography preset="custom" {...label} />
+      <Typography preset="custom">{children}</Typography>
     </button>
   );
 });

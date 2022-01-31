@@ -46,13 +46,16 @@ const Block: React.VoidFunctionComponent = () => {
       <TextField
         placeholder="Search Fake DB"
         onChange={(e) => setSearchTerm(e.target.value)}
-        label="search"
-        type="search"
+        validationFunction={() => true}
+        id="search"
+        name="search"
+        // label="search"
+        // type="search"
       />
-      {isSearching && <Typography>Searching ...</Typography>}
+      {isSearching && <Typography preset="custom">Searching ...</Typography>}
       {comics.map((result) => (
         <div key={result.id}>
-          <Typography variant="p">{result.text}</Typography>
+          <Typography preset="custom">{result.text}</Typography>
         </div>
       ))}
     </div>

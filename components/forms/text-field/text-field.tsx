@@ -9,15 +9,16 @@ import { Typography } from '../../typography/typography';
     3. Style for Success and Autofill (logic needs work)
 */
 
-interface InputProps {
-  label: string;
+interface TextFieldProps {
+  placeholder: string;
   id: string;
   name: string;
   validationFunction: (value: string) => boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { label, id, name, validationFunction } = props;
+const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
+  const { placeholder, id, name, validationFunction } = props;
 
   const [enteredValue, setEnteredValue] = useState('');
   const [formIsValid, setFormIsValid] = useState(false);
@@ -44,7 +45,7 @@ const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           formIsValid === formIsEntered
             ? 'bg-white-transparent'
             : 'bg-red-light'
-        } grid w-80 h-14 pl-2 pt-0 rounded border-0 transition-all duration-200 ease-in-out cursor-text `}
+        } grid w-full sm:w-80 h-14 pl-2 pt-0 rounded border-0 transition-all duration-200 ease-in-out cursor-text `}
       >
         <label htmlFor={id} className="pt-0 mt-0 cursor-text">
           <Typography
@@ -53,7 +54,7 @@ const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
               isNotTouchedYet ? 'mb-0 mt-4' : 'mt-[0.31rem] mb-[0.06rem] '
             } text-gray-default`}
           >
-            {label}
+            {placeholder}
           </Typography>
           <input
             type="text"
