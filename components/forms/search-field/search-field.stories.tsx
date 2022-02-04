@@ -13,6 +13,7 @@ const Template: ComponentStory<typeof SearchField> = (args) => (
 
 export const CustomSearchField = Template.bind({});
 CustomSearchField.args = {
-  validationFunction: () => true,
   placeholder: 'Search',
+  name: 'search',
+  id: 'searchTest',
 };

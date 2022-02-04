@@ -7,7 +7,7 @@ export const Typography = (props: PropsType) => {
     size,
     variant = 'p',
     children = 'The quick brown fox jumps over the lazy dog.',
-    color,
+    color = 'text-black-default',
     textAlign = 'text-left',
     fontFamily = 'font-sans',
     className,

@@ -1,13 +1,16 @@
 interface TypographyPropsType {
   children?: React.ReactNode;
+  className?: string;
+  inlineFlex?: boolean;
   shadowType: 'default' | 'error' | 'success' | 'hover' | 'active';
 }
 
 const Shadow = (props: TypographyPropsType) => {
-  const { children, shadowType } = props;
+  const { children, shadowType, className, inlineFlex = true } = props;
 
-  let shadowClasses =
-    'flex sm:inline-flex transition-all duration-200 ease-in-out shadow-lg ';
+  let shadowClasses = `flex ${
+    inlineFlex ? 'sm:inline-flex' : ''
+  } transition-all duration-200 ease-in-out shadow-lg `;
 
   switch (shadowType) {
     case 'default':
@@ -30,7 +33,7 @@ const Shadow = (props: TypographyPropsType) => {
       break;
   }
 
-  return <div className={shadowClasses}>{children}</div>;
+  return <div className={`${shadowClasses} ${className}`}>{children}</div>;
 };
 
 export { Shadow };

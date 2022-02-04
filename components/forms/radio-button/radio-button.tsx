@@ -52,7 +52,11 @@ const RadioButton = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
         onChange={onChange}
         className={inputClasses}
       />
-      <span className="text-black-default">{name}</span>
+      <span
+        className={`text-black-default ${disabled ? 'cursor-not-allowed' : ''}`}
+      >
+        {name}
+      </span>
     </label>
   );
 });

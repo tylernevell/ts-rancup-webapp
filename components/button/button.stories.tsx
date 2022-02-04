@@ -21,5 +21,5 @@ export const CustomButton = Template.bind({});
 CustomButton.args = {
   type: 'button',
   buttonType: 'primary',
-  label: { children: 'Button' },
+  typographyProps: { color: 'text-on-red-light' },
 };
