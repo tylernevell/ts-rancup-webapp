@@ -89,47 +89,34 @@ const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
     };
 
     return (
-      <Shadow shadowType="default" inlineFlex={false}>
-        <div className="flex w-full h-11 pt-0 rounded border-0 transition-all duration-200 ease-in-out cursor-text">
-          <Button
-            type="submit"
-            buttonType="flat"
-            buttonHeight="large"
-            className="w-10 flex-none rounded-none active:ring-transparent active:border-transparent focus:ring-transparent focus:border-transparent"
-          >
-            <MagnifyingGlassSVG
-              className={
-                formIsValid ? 'fill-black-default' : 'fill-gray-default'
-              }
-            />
-          </Button>
-          <input
-            type="text"
-            ref={ref}
-            id={id}
-            name={name}
-            value={searchTerm}
-            placeholder={placeholder}
-            onChange={valueChangeHandler}
-            onFocus={focusHandler}
-            onBlur={validationHandler}
-            className={`${
-              isNotTouchedYet ? '' : ''
-            } flex-auto w-full placeholder:text-gray-default border-0 p-1 mt-0 text-base text-black-default bg-transparent focus:outline-transparent border-transparent focus:border-transparent focus:ring-0`}
+      <div className="flex w-full h-10 pt-0 rounded-lg border-0 transition-all duration-200 ease-in-out cursor-text bg-gray-lighter">
+        <Button
+          type="submit"
+          buttonType="flat"
+          buttonHeight="large"
+          className="w-10 h-10 flex-none bg-transparent hover:bg-transparent active:ring-transparent active:border-transparent focus:ring-transparent focus:border-transparent"
+        >
+          <MagnifyingGlassSVG
+            width={24}
+            height={24}
+            className="fill-gray-default"
           />
-          <Button
-            type="button"
-            buttonType="flat"
-            buttonHeight="large"
-            onClick={resetInputFieldHandler}
-            className="w-0 flex-none rounded-none hover:bg-white-default active:bg-white-default active:ring-transparent active:border-transparent focus:ring-transparent focus:border-transparent"
-          >
-            <div className="pl-1 pt-1">
-              <CancelSVG className="fill-gray-default hover:fill-black-default" />
-            </div>
-          </Button>
-        </div>
-      </Shadow>
+        </Button>
+        <input
+          type="text"
+          ref={ref}
+          id={id}
+          name={name}
+          value={searchTerm}
+          placeholder={placeholder}
+          onChange={valueChangeHandler}
+          onFocus={focusHandler}
+          onBlur={validationHandler}
+          className={`${
+            isNotTouchedYet ? '' : ''
+          } flex-auto w-full placeholder:text-gray-default border-0 p-1 mt-0 text-base text-gray-dark bg-transparent focus:outline-transparent border-transparent focus:border-transparent focus:ring-0`}
+        />
+      </div>
     );
   }
 );

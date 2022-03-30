@@ -2,7 +2,12 @@ import { FunctionComponent } from 'react';
 import type { SVGPropsType } from './types';
 
 const MagnifyingGlassSVG: FunctionComponent<SVGPropsType> = (props) => {
-  const { width = 16, height = 16, viewBox = '0 0 16 16', className } = props;
+  const {
+    width = 30,
+    height = 30,
+    viewBox = '0 0 50 50',
+    className = 'fill-gray-dark',
+  } = props;
 
   return (
     <svg
@@ -12,11 +17,7 @@ const MagnifyingGlassSVG: FunctionComponent<SVGPropsType> = (props) => {
       className={className}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M11.206 12.617L14.296 15.703C14.686 16.099 15.316 16.099 15.706 15.703C16.098 15.308 16.098 14.669 15.706 14.273L12.626 11.193C13.496 10.025 14.013 8.577 14.013 7.007C14.013 3.137 10.876 0 7.007 0C3.137 0 0 3.137 0 7.007C0 10.877 3.137 14.014 7.007 14.014C8.582 14.014 10.036 13.494 11.206 12.617ZM7.006 12.012C4.243 12.012 2.002 9.772 2.002 7.007C2.002 4.243 4.242 2.002 7.007 2.002C9.771 2.002 12.011 4.242 12.011 7.007C12.011 9.771 9.771 12.012 7.008 12.012H7.006Z"
-      />
+      <path d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z" />
     </svg>
   );
 };
