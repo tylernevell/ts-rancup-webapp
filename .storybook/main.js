@@ -7,6 +7,7 @@ module.exports = {
     builder: 'webpack5',
   },
   addons: [
+    'storybook-addon-next',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     {

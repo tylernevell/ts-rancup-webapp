@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Typography } from './typography';
 import type { PropsType } from './types';
 
@@ -6,6 +6,17 @@ export default {
   title: 'Components/Typography',
   component: Typography,
   argTypes: {},
-} as Meta;
+} as ComponentMeta<typeof Typography>;
 
-export const Text: Story<PropsType> = (args) => <Typography {...args} />;
+const Template: ComponentStory<typeof Typography> = (args) => (
+  <>
+    <Typography {...args} />
+  </>
+);
+
+export const TypographyExamples = Template.bind({});
+TypographyExamples.args = {
+  children: 'Typography',
+  preset: 'heading',
+  color: 'text-primary-default',
+};

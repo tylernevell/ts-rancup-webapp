@@ -1,15 +1,21 @@
-import { AriaAttributes, forwardRef } from 'react';
+import { AriaAttributes, forwardRef, ReactNode } from 'react';
+import { TypographyFieldsType } from '../typography/types';
 import { Typography } from '../typography/typography';
 
-type ButtonTypes = 'default' | 'primary' | 'danger' | 'success';
+/* 
+  TODO:
+    1. Fix typographyProps - custom attributes are not overwriting defaults...
+*/
+
+type ButtonTypes = 'primary' | 'secondary' | 'flat';
 
 type ButtonPropTypes = {
-  children?: React.ReactNode;
+  children?: ReactNode;
+  typographyProps?: TypographyFieldsType;
   type: 'submit' | 'button' | 'reset' | undefined;
   buttonType?: ButtonTypes;
   ariaLabel?: string;
   onClick?: (event: React.MouseEvent | React.KeyboardEvent) => void;
-  href?: string;
   dataToggle?: string;
   ariaHasPopup?: AriaAttributes['aria-haspopup'];
   ariaExpanded?: AriaAttributes['aria-expanded'];
@@ -22,13 +28,15 @@ type ButtonPropTypes = {
   dataReview?: string;
   id?: string;
   name?: string;
+  className?: string;
 };
 
 type RefType = HTMLButtonElement;
 
 const Button = forwardRef<RefType, ButtonPropTypes>((props, ref) => {
   const {
-    children = <Typography>Button</Typography>,
+    children = 'Button',
+    typographyProps = {},
     type = 'button',
     buttonType = 'default',
     ariaLabel,
@@ -43,44 +51,53 @@ const Button = forwardRef<RefType, ButtonPropTypes>((props, ref) => {
     dataId,
     id,
     name,
+    className,
   } = props;
 
   let buttonTypeClasses =
-    'grid gap-2 grid-flow-col items-center justify-center whitespace-nowrap ' +
-    'text-sm rounded-sm outline-none focus:outline-none transition-all ' +
-    'duration-200 ease-in-out disabled:bg-button-background-disabled ' +
-    'disabled:cursor-not-allowed drop-shadow-sm shadow font-medium ';
+    'grid gap-2 grid-flow-col px-5 py-1 items-center justify-center whitespace-nowrap ' +
+    'text-base rounded transition-all duration-200 ease-in-out ' +
+    'disabled:cursor-not-allowed drop-shadow-sm shadow-sm shadow font-medium ';
+
+  const typographyPropsFinal = typographyProps;
 
   switch (buttonType) {
-    case 'primary':
+    case 'secondary':
       buttonTypeClasses +=
-        'px-3 py-1 shadow-sm text-white bg-primary-default ' +
-        'hover:bg-primary-hover active:bg-button-background-primary-pressed ' +
-        'active:border-gray-400 focus:outline-none focus:ring-2 focus:border-teal-500 ' +
-        'focus:border-transparent disabled:bg-button-background-disabled ';
+        'bg-white-default border ring-2 ring-primary-default ' +
+        'disabled:text-primary-disabled disabled:ring-primary-disabled disabled:bg-white-default disabled:border-transparent ' +
+        'hover:bg-secondary-hover active:bg-secondary-active active:border-gray-default ' +
+        'focus:border-transparent focus:ring-2 focus:ring-gray-default ';
+      typographyPropsFinal.color = 'text-primary-default';
       break;
-    case 'danger':
+    case 'flat':
       buttonTypeClasses +=
-        'px-3 py-1 shadow-sm bg-action-critical hover:bg-action-critical-hover ' +
-        'active:bg-action-critical-pressed active:border-gray-400 focus:outline-none ' +
-        'focus:ring-2 focus:border-teal-500 focus:border-transparent disabled:bg-button-background-disabled ';
+        'bg-white-default border drop-shadow-none shadow-none border-transparent hover:bg-secondary-hover ' +
+        'disabled:text-primary-disabled disabled:ring-primary-disabled disabled:bg-white-default disabled:border-transparent ' +
+        'active:bg-secondary-active active:border-gray-default ' +
+        'focus:ring-2 focus:ring-gray-default focus:border-transparent ';
+      typographyPropsFinal.color = 'text-primary-default';
       break;
     default:
       buttonTypeClasses +=
-        'px-3 py-1 shadow-sm bg-tertiary-default border hover:bg-tertiary-hover ' +
-        'active:bg-tertiary-active active:border-gray-400 focus:outline-none focus:ring-2 ' +
-        'focus:border-teal-500 focus:border-transparent disabled:bg-button-background-disabled ';
+        'text-white-default border bg-primary-default ' +
+        'disabled:bg-primary-disabled disabled:ring-transparent disabled:border-transparent ' +
+        'hover:bg-primary-hover active:bg-primary-active active:border-gray-default ' +
+        'focus:ring-2 focus:ring-gray-default focus:border-transparent ';
+      typographyPropsFinal.color = 'text-white-default';
   }
+
+  Object.assign(typographyPropsFinal, typographyProps);
 
   switch (buttonHeight) {
     case 'small':
-      buttonTypeClasses += 'h-7 ';
+      buttonTypeClasses += 'h-8 ';
       break;
     case 'large':
-      buttonTypeClasses += 'h-10 ';
+      buttonTypeClasses += 'h-11 ';
       break;
     default:
-      buttonTypeClasses += 'h-8 ';
+      buttonTypeClasses += 'h-9 ';
   }
 
   buttonTypeClasses += buttonWidth === 'responsive' ? '' : 'w-full';
@@ -96,14 +113,16 @@ const Button = forwardRef<RefType, ButtonPropTypes>((props, ref) => {
       id={id}
       name={name}
       ref={ref}
-      className={buttonTypeClasses}
+      className={`${buttonTypeClasses} ${className}`}
       type={type}
       onClick={onClick}
       onKeyPress={onClick}
       tabIndex={0}
       disabled={disabled}
     >
-      {children}
+      <Typography preset="custom" {...typographyPropsFinal}>
+        {children}
+      </Typography>
     </button>
   );
 });
