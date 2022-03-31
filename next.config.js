@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* jshint node: true */
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');

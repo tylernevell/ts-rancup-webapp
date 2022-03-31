@@ -7,7 +7,7 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof RankingsRow>;
 
-const Template: ComponentStory<typeof RankingsRow> = (args) => <RankingsRow />;
+const Template: ComponentStory<typeof RankingsRow> = (args) => <></>;
 
 export const RancUpRankingsRow = Template.bind({});
 RancUpRankingsRow.args = {};

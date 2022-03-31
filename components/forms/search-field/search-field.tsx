@@ -37,9 +37,10 @@ interface SearchFieldProps {
   placeholder: string;
   id: string;
   name: string;
-  results: Result[];
+  className?: string;
+  results?: Result[];
   validationFunction?: (value: string) => boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
@@ -48,6 +49,7 @@ const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
       placeholder,
       id,
       name,
+      className,
       results = dummyResults,
       validationFunction = (value: string) => value.length > 0,
     } = props;
@@ -89,7 +91,9 @@ const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
     };
 
     return (
-      <div className="flex w-full h-10 pt-0 rounded-lg border-0 transition-all duration-200 ease-in-out cursor-text bg-gray-lighter">
+      <div
+        className={`flex w-full h-10 pt-0 rounded-lg border-0 transition-all duration-200 ease-in-out cursor-text bg-gray-lighter ${className}`}
+      >
         <Button
           type="submit"
           buttonType="flat"

@@ -5,6 +5,7 @@
 html,
 body,
 #__next {
+  margin: 0;
   height: 100%;
   color: var(--primary-500);
   -webkit-font-smoothing: antialiased;
@@ -72,5 +73,9 @@ a {
   }
   .shadow-sucess {
     @apply shadow-green-200;
+  }
+  .navbar-nav-scroll {
+    max-height: var(--bs-scroll-height, 75vh);
+    overflow-y: auto;
   }
 }
