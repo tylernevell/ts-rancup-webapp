@@ -1,4 +1,4 @@
-type sizeType = 'large' | 'medium' | 'small';
+type sizeType = 'large' | 'medium' | 'small' | 'tiny';
 
 export interface UserProfilePicTypes {
   size?: sizeType;

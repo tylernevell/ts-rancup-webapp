@@ -15,6 +15,12 @@ const UserProfilePic = (props: UserProfilePicTypes) => {
   let classes = '';
   let width, height;
   switch (size) {
+    case 'tiny':
+      width = 28;
+      height = 28;
+      classes += 'w-7 h-7';
+      break;
+
     case 'small':
       width = 36;
       height = 36;
