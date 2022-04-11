@@ -4,7 +4,7 @@ import { SearchField } from '../forms/search-field/search-field';
 const NavBar = () => {
   return (
     <nav className="flex flex-wrap relative w-full items-center justify-between py-2 bg-white-default border-0 m-0 p-0 shadow-sm shadow-gray-default">
-      <div className="w-full mx-auto max-w-screen-xl flex justify-between">
+      <div className="w-full mx-auto max-w-screen-lg flex justify-between">
         <div className="flex items-center space-x-10">
           <Image
             src="https://images.squarespace-cdn.com/content/v1/6007676ae344bd2f87863dc4/1618364278872-4NQYN12G95AXR29R9AZD/Updated+logo+to+size+%28White+Letters%29+Part+2.png?format=1500w"

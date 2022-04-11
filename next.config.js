@@ -5,6 +5,9 @@ const runtimeCaching = require('next-pwa/cache');
 
 /** @type {import('next').NextConfig} */
 module.exports = withPWA({
+  images: {
+    domains: ['images.squarespace-cdn.com'],
+  },
   reactStrictMode: true,
   pwa: {
     dest: 'public',
