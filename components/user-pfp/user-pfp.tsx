@@ -15,26 +15,34 @@ const UserProfilePic = (props: UserProfilePicTypes) => {
   let classes = '';
   let width, height;
   switch (size) {
+    case 'tiny':
+      width = 28;
+      height = 28;
+      classes += 'w-7 h-7';
+      break;
+
     case 'small':
-      classes += '';
       width = 36;
       height = 36;
+      classes += 'w-9 h-9';
       break;
 
     case 'large':
       width = 64;
       height = 64;
+      classes += 'w-16 h-16';
       break;
 
     default:
       width = 48;
       height = 48;
+      classes += 'w-12 h-12';
       break;
   }
 
   return (
     <div
-      className={`rounded-full bg-red-700 w-12 h-12 ${classes} ${className}`}
+      className={`rounded-full bg-primary-default p-0.5 ${classes} ${className}`}
     >
       <Image
         src={imgUrl}
